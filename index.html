@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive Flipkart-inspired e-commerce demo website.">
+  <title>Flipkart — Online Shopping</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="Flipkart home">
+        <span class="brand-name">Flipkart</span>
+        <span class="brand-tagline">Explore <b>Plus ✦</b></span>
+      </a>
+
+      <form class="search-form" id="searchForm" role="search">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search for products, brands and more" aria-label="Search products">
+        <button type="submit" aria-label="Submit search">Search</button>
+      </form>
+
+      <button class="login-button" id="loginButton" type="button">Login</button>
+      <button class="header-link seller-link" id="sellerButton" type="button">Become a Seller</button>
+      <button class="header-link cart-button" id="cartButton" type="button" aria-label="Open shopping cart">
+        <span aria-hidden="true">🛒</span> Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="category-strip" aria-label="Shop by category">
+      <button class="category-item active" data-category="All">
+        <span class="category-icon">✨</span><span>Top Picks</span>
+      </button>
+      <button class="category-item" data-category="Grocery">
+        <span class="category-icon">🥬</span><span>Grocery</span>
+      </button>
+      <button class="category-item" data-category="Mobiles">
+        <span class="category-icon">📱</span><span>Mobiles</span>
+      </button>
+      <button class="category-item" data-category="Fashion">
+        <span class="category-icon">👕</span><span>Fashion</span>
+      </button>
+      <button class="category-item" data-category="Electronics">
+        <span class="category-icon">💻</span><span>Electronics</span>
+      </button>
+      <button class="category-item" data-category="Home">
+        <span class="category-icon">🛋️</span><span>Home</span>
+      </button>
+      <button class="category-item" data-category="Appliances">
+        <span class="category-icon">🧺</span><span>Appliances</span>
+      </button>
+      <button class="category-item" data-category="Beauty">
+        <span class="category-icon">🧴</span><span>Beauty</span>
+      </button>
+      <button class="category-item" data-category="Toys">
+        <span class="category-icon">🧸</span><span>Toys</span>
+      </button>
+    </section>
+
+    <section class="hero" aria-label="Featured offer">
+      <div class="hero-copy">
+        <p class="eyebrow">THE BIG SHOPPING DAYS</p>
+        <h1>Good finds.<br><span>Great prices.</span></h1>
+        <p>Everyday essentials to little luxuries — discover something you love.</p>
+        <button class="primary-button" id="shopNowButton" type="button">Shop deals <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-product phone-art">📱</div>
+        <div class="hero-product shoe-art">👟</div>
+        <div class="hero-product headphones-art">🎧</div>
+        <div class="sale-sticker"><small>UP TO</small><strong>60%</strong><small>OFF*</small></div>
+      </div>
+      <div class="hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+    <section class="benefits" aria-label="Shopping benefits">
+      <div><span>🚚</span><p><b>Fast delivery</b><small>To your doorstep</small></p></div>
+      <div><span>🔒</span><p><b>Secure payments</b><small>Shop with confidence</small></p></div>
+      <div><span>↩️</span><p><b>Easy returns</b><small>On eligible products</small></p></div>
+      <div><span>⭐</span><p><b>Top-rated picks</b><small>Customer favourites</small></p></div>
+    </section>
+
+    <section class="products-section" id="deals">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow blue-eyebrow">HANDPICKED FOR YOU</p>
+          <h2 id="productHeading">Deals of the day</h2>
+        </div>
+        <div class="product-controls">
+          <label class="sort-label" for="sortSelect">Sort by</label>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="result-summary" id="resultSummary" aria-live="polite"></p>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <span>🔎</span>
+        <h3>No products found</h3>
+        <p>Try a different search or choose another category.</p>
+        <button class="secondary-button" id="clearFiltersButton" type="button">Clear filters</button>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div>
+        <p class="eyebrow">A LITTLE SOMETHING EXTRA</p>
+        <h2>Deals worth opening your inbox for.</h2>
+        <p>Sign up for demo updates and shopping inspiration.</p>
+      </div>
+      <form id="newsletterForm" class="newsletter-form">
+        <label class="sr-only" for="emailInput">Email address</label>
+        <input id="emailInput" type="email" placeholder="Enter your email address" required>
+        <button class="primary-button" type="submit">Sign me up</button>
+      </form>
+      <p class="newsletter-message" id="newsletterMessage" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div><h3>ABOUT</h3><a href="#about">About us</a><a href="#careers">Careers</a><a href="#press">Press</a></div>
+      <div><h3>HELP</h3><a href="#payments">Payments</a><a href="#shipping">Shipping</a><a href="#returns">Returns</a></div>
+      <div><h3>POLICY</h3><a href="#terms">Terms of use</a><a href="#privacy">Privacy</a><a href="#security">Security</a></div>
+      <div class="footer-note"><h3>SHOP SMART</h3><p>A front-end demo inspired by online shopping experiences. Orders and payments are not processed.</p></div>
+    </div>
+    <div class="footer-bottom"><span>🛍️ Flipkart-inspired demo</span><span>© <span id="year"></span> Shopping Demo. All rights reserved.</span></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="cart-dialog" id="cartDialog" aria-labelledby="cartTitle">
+    <div class="dialog-heading">
+      <div><p class="eyebrow blue-eyebrow">YOUR BAG</p><h2 id="cartTitle">Shopping cart</h2></div>
+      <button class="icon-button" id="closeCartButton" aria-label="Close cart" type="button">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+      <p class="cart-note">Demo only — checkout and payment are not available.</p>
+      <button class="primary-button checkout-button" id="checkoutButton" type="button">Continue to checkout</button>
+    </div>
+  </dialog>
+
+  <dialog class="product-dialog" id="productDialog" aria-labelledby="detailName">
+    <button class="icon-button detail-close" id="closeProductButton" aria-label="Close product details" type="button">✕</button>
+    <div id="productDetailContent"></div>
+  </dialog>
+</body>
+</html>
